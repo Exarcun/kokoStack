@@ -1,0 +1,15 @@
+import * as React from "react";
+import Svg, { Path } from "react-native-svg";
+
+const SvgComponent = () => (
+  <Svg xmlns="http://www.w3.org/2000/svg" width="100%" height={110} viewBox="0 0 659 110" fill="none">
+    <Path
+      fill="#3C1E1C"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M238.774 17.5869C166.977 15.1535 102.256 9.69072 50.1876 2.08269C18.3877 12.9267 0 25.7541 0 39.5005C0 78.4366 147.522 110 329.5 110C511.478 110 659 78.4366 659 39.5005C659 25.2252 639.17 11.9409 605.082 0.839844C551.416 9.13471 483.237 15.0787 407.157 17.6229C385.499 28.9882 355.785 36.0002 323 36.0002C290.181 36.0002 260.438 28.9734 238.774 17.5869Z"
+    />
+  </Svg>
+);
+
+export default SvgComponent;

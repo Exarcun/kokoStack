@@ -1,0 +1,11 @@
+{
+     "compilerOptions": {
+       "allowJs": true,
+       "checkJs": true
+     },
+     "include": [
+       "typings/**/*.d.ts",
+       "src/**/*"
+     ]
+   }
+   
