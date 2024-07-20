@@ -7,7 +7,6 @@ import styles from './FavoritesScreenStyles';
 import { useAuth } from '../../context/AuthContext';
 import { Post, HomeScreenNavigationProp } from '../../types';
 import { useBottomNav } from '../../navigator/BottomNavContext';
-import { API_BASE_URL, BASE_URL } from '../../../config';
 
 const FavoritesScreen = () => {
   const [favorites, setFavorites] = useState<Post[]>([]);

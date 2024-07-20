@@ -15,7 +15,6 @@ import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import { LoginScreenProps } from '../../types';
-import { API_BASE_URL, BASE_URL } from '../../../config';
 
 const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const { login } = useAuth();
@@ -25,7 +24,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/login`, { email, password });
+      const response = await axios.post('http://172.20.0.119:5000/api/login', { email, password });
       const token = response.data.token;
       login(token);
       Alert.alert('Success', 'Login successful');

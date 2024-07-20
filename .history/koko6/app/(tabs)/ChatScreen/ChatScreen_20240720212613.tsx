@@ -62,7 +62,7 @@ const ChatScreen = () => {
 
   const fetchUserProfile = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/profile`, {
+      const response = await axios.get('http://172.20.0.119:5000/api/profile', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProfilePic(response.data.profilepic);
@@ -77,7 +77,7 @@ const ChatScreen = () => {
 
   const handleConversationPress = async (conversation: Conversation) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}//conversations/${conversation.id}/messages`, {
+      const response = await axios.get(`http://172.20.0.119:5000/api/conversations/${conversation.id}/messages`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setActiveChat({...conversation, messages: response.data});
@@ -91,7 +91,7 @@ const ChatScreen = () => {
     if (!activeChat || !message.trim()) return;
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/messages`, {
+      const response = await axios.post('http://172.20.0.119:5000/api/messages', {
         conversationId: activeChat.id,
         content: message
       }, {
@@ -128,12 +128,12 @@ const ChatScreen = () => {
     }
 
     try {
-      const conversationResponse = await axios.post(`${API_BASE_URL}/conversations`, 
+      const conversationResponse = await axios.post('http://172.20.0.119:5000/api/conversations', 
         { otherUserEmail: newChatEmail },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      const messageResponse = await axios.post(`${API_BASE_URL}/messages`, 
+      const messageResponse = await axios.post('http://172.20.0.119:5000/api/messages', 
         { conversationId: conversationResponse.data.id, content: newChatMessage },
         { headers: { Authorization: `Bearer ${token}` } }
       );

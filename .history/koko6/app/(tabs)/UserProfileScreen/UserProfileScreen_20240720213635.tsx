@@ -6,7 +6,6 @@ import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../types';
 import styles from './UserProfileScreenStyles';
 import { MaterialIcons } from '@expo/vector-icons';
-import { API_BASE_URL, BASE_URL } from '../../../config';
 
 type UserProfileScreenRouteProp = RouteProp<RootStackParamList, 'UserProfile'>;
 

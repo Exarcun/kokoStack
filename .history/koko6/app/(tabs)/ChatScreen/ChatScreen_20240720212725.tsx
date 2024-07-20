@@ -133,7 +133,7 @@ const ChatScreen = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      const messageResponse = await axios.post(`${API_BASE_URL}/messages`, 
+      const messageResponse = await axios.post('http://172.20.0.119:5000/api/messages', 
         { conversationId: conversationResponse.data.id, content: newChatMessage },
         { headers: { Authorization: `Bearer ${token}` } }
       );

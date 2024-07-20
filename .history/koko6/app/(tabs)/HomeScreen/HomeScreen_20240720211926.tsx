@@ -9,7 +9,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useAuth } from '../../context/AuthContext';
 import TCMapCarousel from '../TCMap/TCMapCrousel'; // Adjust the path if necessary
 import { useBottomNav } from '../../navigator/BottomNavContext';
-import { API_BASE_URL, BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../../config';
 
 // Add this new interface for Suggestion
 interface Suggestion {
@@ -116,7 +116,7 @@ const HomeScreen = () => {
           return newFavorites;
         });
       } else {
-        await axios.post(`${API_BASE_URL}/favorites/${postId}`, {}, {
+        await axios.post(`http://172.20.0.119:5000/api/favorites/${postId}`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setFavoritedPosts(prevFavorites => new Set(prevFavorites).add(postId));
@@ -163,7 +163,7 @@ const HomeScreen = () => {
       >
         <View style={styles.postHeader}>
           <Image 
-            source={{ uri: `${BASE_URL}/${item.pic_location.replace(/\\/g, '/')}` }} 
+            source={{ uri: `http://172.20.0.119:5000/${item.pic_location.replace(/\\/g, '/')}` }} 
             style={styles.postImage} 
           />
           <View style={styles.postHeaderText}>
@@ -221,7 +221,7 @@ const HomeScreen = () => {
             <TouchableOpacity style={styles.profileIcon}>
               {isLoggedIn && profilePic ? (
                 <Image
-                  source={{ uri: `${BASE_URL}/${profilePic}` }}
+                  source={{ uri: `http://172.20.0.119:5000/${profilePic}` }}
                   style={styles.profileImage}
                 />
               ) : (
@@ -299,7 +299,7 @@ const HomeScreen = () => {
       })}
     >
       <ImageBackground 
-        source={{ uri: `${BASE_URL}/uploads/suggestion/${suggestion.background_image}` }}
+        source={{ uri: `http://172.20.0.119:5000/uploads/suggestion/${suggestion.background_image}` }}
         style={styles.suggestionBackground}
         resizeMode="cover"
       >

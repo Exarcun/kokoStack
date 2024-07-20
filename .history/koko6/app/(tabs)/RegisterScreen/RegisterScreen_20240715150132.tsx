@@ -15,7 +15,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import { RegisterScreenNavigationProp } from '../../types';
-import { API_BASE_URL, BASE_URL } from '../../../config';
 
 type Props = {
   navigation: RegisterScreenNavigationProp;
@@ -35,7 +34,7 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/register`, { email, password });
+      const response = await axios.post("http://172.20.0.119:5000/api/register", { email, password });
       const { token } = response.data;
       Alert.alert('Success', 'Registration successful!', [
         { text: 'OK', onPress: () => navigation.navigate('Home') }

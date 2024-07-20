@@ -68,7 +68,7 @@ const ProfileScreen = () => {
   const handleSave = async (field: 'username' | 'bio' | 'cap') => {
     try {
       const data = { [field]: field === 'username' ? username : field === 'bio' ? userBio : userCap };
-      await axios.put(`${API_BASE_URL}/user/${userEmail}/${field}`, data, {
+      await axios.put(`http://172.20.0.119:5000/api/user/${userEmail}/${field}`, data, {
         headers: { Authorization: `Bearer ${token}` }
       });
       Alert.alert('Success', `${field.charAt(0).toUpperCase() + field.slice(1)} updated successfully`);
@@ -100,7 +100,7 @@ const ProfileScreen = () => {
 
       try {
         const response = await axios.put(
-          `${API_BASE_URL}/user/${userEmail}/${type === 'profile' ? 'profilepic' : 'bannerpic'}`,
+          `http://172.20.0.119:5000/api/user/${userEmail}/${type === 'profile' ? 'profilepic' : 'bannerpic'}`,
           formData,
           {
             headers: {
@@ -126,7 +126,7 @@ const ProfileScreen = () => {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <ImageBackground
-          source={{ uri: `${BASE_URL}/${bannerPic}` }}
+          source={{ uri: `http://172.20.0.119:5000/${bannerPic}` }}
           style={styles.headerBackground}
         >
           <TouchableOpacity style={styles.editBannerButton} onPress={() => pickImage('banner')}>
@@ -135,7 +135,7 @@ const ProfileScreen = () => {
           <View style={styles.headerContent}>
             <TouchableOpacity onPress={() => pickImage('profile')}>
               <Image
-                source={{ uri: `${BASE_URL}/${profilePic}` }}
+                source={{ uri: `http://172.20.0.119:5000/${profilePic}` }}
                 style={styles.profileImage}
               />
               <View style={styles.editProfilePicButton}>
@@ -223,7 +223,7 @@ const ProfileScreen = () => {
               onPress={() => handlePostPress(post.id.toString())}
             >
               <ImageBackground
-                source={{ uri: `${BASE_URL}/${post.pic_location.replace(/\\/g, '/')}` }}
+                source={{ uri: `http://172.20.0.119:5000/${post.pic_location.replace(/\\/g, '/')}` }}
                 style={styles.postImageBackground}
               >
                 <View style={styles.postTitleContainer}>

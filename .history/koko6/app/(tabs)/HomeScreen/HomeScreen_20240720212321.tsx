@@ -221,7 +221,7 @@ const HomeScreen = () => {
             <TouchableOpacity style={styles.profileIcon}>
               {isLoggedIn && profilePic ? (
                 <Image
-                  source={{ uri: `${BASE_URL}/${profilePic}` }}
+                  source={{ uri: `http://172.20.0.119:5000/${profilePic}` }}
                   style={styles.profileImage}
                 />
               ) : (

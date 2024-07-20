@@ -221,7 +221,7 @@ const HomeScreen = () => {
             <TouchableOpacity style={styles.profileIcon}>
               {isLoggedIn && profilePic ? (
                 <Image
-                  source={{ uri: `${BASE_URL}/${profilePic}` }}
+                  source={{ uri: `http://172.20.0.119:5000/${profilePic}` }}
                   style={styles.profileImage}
                 />
               ) : (
@@ -299,7 +299,7 @@ const HomeScreen = () => {
       })}
     >
       <ImageBackground 
-        source={{ uri: `${BASE_URL}/uploads/suggestion/${suggestion.background_image}` }}
+        source={{ uri: `http://172.20.0.119:5000/uploads/suggestion/${suggestion.background_image}` }}
         style={styles.suggestionBackground}
         resizeMode="cover"
       >
