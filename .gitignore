@@ -22,6 +22,7 @@ b
 # Dependency directories
 jspm_packages/
 project_files
+.history/
 
 # Optional npm cache directory
 .npm

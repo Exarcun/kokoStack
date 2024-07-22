@@ -43,7 +43,12 @@ def copy_project_files(source_dir, destination_dir):
         'hooks',
         'kokoStack',
         'scripts',
-        'assets'
+        'assets',
+        'apollo-upload-client.d.ts',
+        'components',
+        'README.md',
+        
+
     ]
 
     # Dictionary to store file hashes
@@ -67,7 +72,7 @@ def copy_project_files(source_dir, destination_dir):
                 continue
 
             destination_path = os.path.join(destination_dir, file)
-
+  
             # If a file with the same name already exists, add a number to make it unique
             counter = 1
             while os.path.exists(destination_path):

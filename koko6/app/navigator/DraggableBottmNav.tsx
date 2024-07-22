@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, forwardRef } from 'react';
+import React, { useImperativeHandle, forwardRef, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Dimensions, StatusBar, Text } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { PanGestureHandler } from 'react-native-gesture-handler';
@@ -12,7 +12,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useAuth } from '../context/AuthContext';
 import NavigatorBackground from './NavigatorBackground';
 import PublishIcon from './PublishIcon';
-import ChatPreview from '../../app/(tabs)/ChatScreen/ChatScreen'; // Import the new ChatPreview component
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const TABBAR_HEIGHT = 80;
@@ -31,6 +30,11 @@ const DraggableBottomNav = forwardRef<DraggableBottomNavRef, BottomTabBarProps>(
 }, ref) => {
   const { isLoggedIn } = useAuth();
   const translateY = useSharedValue(0);
+
+  useEffect(() => {
+    StatusBar.setBarStyle('light-content');
+    StatusBar.setBackgroundColor('#3C1E1C');
+  }, []);
 
   const fullyExtend = () => {
     translateY.value = withSpring(MAX_UPWARD_TRANSLATE_Y, { damping: 50 });
@@ -88,8 +92,8 @@ const DraggableBottomNav = forwardRef<DraggableBottomNavRef, BottomTabBarProps>(
         <View style={styles.backgroundContainer}>
           <StatusBar
             barStyle="light-content"
-            backgroundColor="#000000"
-            translucent={true}
+            backgroundColor="#3C1E1C"
+            translucent={false}
           />
           <NavigatorBackground
             width={SCREEN_WIDTH + 30}
@@ -137,10 +141,12 @@ const DraggableBottomNav = forwardRef<DraggableBottomNavRef, BottomTabBarProps>(
           </View>
           <View style={styles.stickyContent}>
             {isLoggedIn ? (
-              <ChatPreview />
+              <View style={styles.contentPlaceholder}>
+                <Text style={styles.contentPlaceholderText}>Sticky Content Area</Text>
+              </View>
             ) : (
               <View style={styles.loginPrompt}>
-                <Text style={styles.loginPromptText}>Please log in to view chats</Text>
+                <Text style={styles.loginPromptText}>PlaceHolder</Text>
               </View>
             )}
           </View>
@@ -157,6 +163,16 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: DRAWER_HEIGHT + TABBAR_HEIGHT,
+  },
+  contentPlaceholder: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  contentPlaceholderText: {
+    color: '#fff',
+    fontSize: 16,
+    textAlign: 'center',
   },
   backgroundContainer: {
     ...StyleSheet.absoluteFillObject,

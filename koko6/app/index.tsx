@@ -9,10 +9,10 @@ import PostScreen from './(tabs)/PostScreen/PostScreen';
 function App() {
   console.log('TabNavigator:', TabNavigator);
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#000000' }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <StatusBar
-        barStyle="light-content"
-        backgroundColor="#000000"
+        barStyle="dark-content"
+        backgroundColor="#FFFFFF"
         translucent={true}
       />
       <AuthProvider>

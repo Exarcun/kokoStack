@@ -31,6 +31,8 @@ const styles = StyleSheet.create({
     zIndex: 1,
     height: 100,
   },
+  notLoggedInText: {
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -212,4 +214,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default styles; 

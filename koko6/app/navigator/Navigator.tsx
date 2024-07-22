@@ -24,11 +24,11 @@ function TabNavigator() {
   const bottomNavRef = useBottomNav();
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#000000' }}>
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <StatusBar
         barStyle="light-content"
-        backgroundColor="#000000"
-        translucent={true}
+        backgroundColor="#3C1E1C"
+        translucent={false}
       />
       <Tab.Navigator
         tabBar={(props) => <DraggableBottomNav ref={bottomNavRef} {...props} />}
